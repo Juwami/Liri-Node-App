@@ -9,31 +9,43 @@ let request = process.argv[3]
 
 switch (process.argv[2]) {
     case 'concert-this':
-        console.log('concert')
-        concertThis(process.argv[2])
+        concertThis(request)
         break
 
     case 'spotify-this-song':
-        console.log('spotify')
+        spotifyThis(request)
         break
 
     case 'movie-this':
-        console.log('movie')
+        movieThis(request)
         break
 
     case 'do-what-it-says':
-        console.log('do')
+        doWhat(request)
         break
 }
 
 // case 'concert-this' function
 function concertThis (artist) {
     console.log(artist)
-    axios
-        .get('https://rest.bandsintown.com/artists/' + artist + '/events?app_id=codingbootcamp')
-        .then(function (response) {
-            console.log(response)
-        })
+    // axios
+    //     .get('https://rest.bandsintown.com/artists/' + artist + '/events?app_id=codingbootcamp')
+    //     .then(function (response) {
+    //         console.log(response)
+    //     })
 }
 
 // case 'spotify-this-song' function
+function spotifyThis (artist) {
+    console.log(artist)
+}
+
+// case 'movie-this' function
+function movieThis (title) {
+    console.log(title)
+}
+
+// case 'do-what-it-says' function
+function doWhat (action) {
+    console.log(action)
+}
