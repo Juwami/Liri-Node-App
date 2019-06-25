@@ -21,9 +21,12 @@ switch (process.argv[2]) {
         break
 
     case 'movie-this':
-        movieThis(request)
+        if (request) {
+            movieThis(request)
+        } else {
+            movieThis('mr.nobody')
+        }
         break
-
     case 'do-what-it-says':
         doWhat(request)
         break
@@ -65,37 +68,20 @@ function spotifyThis(song) {
 
 // case 'movie-this' function
 function movieThis(title) {
-    if (title === '') {
-        axios
-            .get('http://www.omdbapi.com/?apikey=trilogy&t=mr.nobody')
-            .then(function (response) {
-                data = response.data
-                // console.log(data)
-                console.log('Title: ', data.Title)
-                console.log('Year: ', data.Year)
-                console.log('imdbRating: ', data.imdbRating)
-                console.log('Rating: ', data.Ratings[1])
-                console.log('Country: ', data.Country)
-                console.log('Language: ', data.Language)
-                console.log('Plot: ', data.Plot)
-                console.log('Actors: ', data.Actors)
-            })
-    } else {
-        axios
-            .get('http://www.omdbapi.com/?apikey=trilogy&t=' + title)
-            .then(function (response) {
-                    data = response.data
-                    // console.log(data)
-                    console.log('Title: ', data.Title)
-                    console.log('Year: ', data.Year)
-                    console.log('imdbRating: ', data.imdbRating)
-                    console.log('Rating: ', data.Ratings[1])
-                    console.log('Country: ', data.Country)
-                    console.log('Language: ', data.Language)
-                    console.log('Plot: ', data.Plot)
-                    console.log('Actors: ', data.Actors)
-                })
-            }
+    axios
+        .get('http://www.omdbapi.com/?apikey=trilogy&t=' + title)
+        .then(function (response) {
+            data = response.data
+            // console.log(data)
+            console.log('Title: ', data.Title)
+            console.log('Year: ', data.Year)
+            console.log('imdbRating: ', data.imdbRating)
+            console.log('Rating: ', data.Ratings[1])
+            console.log('Country: ', data.Country)
+            console.log('Language: ', data.Language)
+            console.log('Plot: ', data.Plot)
+            console.log('Actors: ', data.Actors)
+        })
 }
 
 // case 'do-what-it-says' function
