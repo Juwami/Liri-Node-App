@@ -65,18 +65,42 @@ function spotifyThis(song) {
 
 // case 'movie-this' function
 function movieThis(title) {
-    console.log(title)
-    axios
-        .get('http://www.omdbapi.com/?apikey=trilogy&s=' + title)
-        .then(function (response) {
-            data = response.data
-            console.log(data.search.length)
-        })
+    if (title === '') {
+        axios
+            .get('http://www.omdbapi.com/?apikey=trilogy&t=mr.nobody')
+            .then(function (response) {
+                data = response.data
+                // console.log(data)
+                console.log('Title: ', data.Title)
+                console.log('Year: ', data.Year)
+                console.log('imdbRating: ', data.imdbRating)
+                console.log('Rating: ', data.Ratings[1])
+                console.log('Country: ', data.Country)
+                console.log('Language: ', data.Language)
+                console.log('Plot: ', data.Plot)
+                console.log('Actors: ', data.Actors)
+            })
+    } else {
+        axios
+            .get('http://www.omdbapi.com/?apikey=trilogy&t=' + title)
+            .then(function (response) {
+                    data = response.data
+                    // console.log(data)
+                    console.log('Title: ', data.Title)
+                    console.log('Year: ', data.Year)
+                    console.log('imdbRating: ', data.imdbRating)
+                    console.log('Rating: ', data.Ratings[1])
+                    console.log('Country: ', data.Country)
+                    console.log('Language: ', data.Language)
+                    console.log('Plot: ', data.Plot)
+                    console.log('Actors: ', data.Actors)
+                })
+            }
 }
 
 // case 'do-what-it-says' function
 function doWhat() {
-    fs.readFile('random.txt', 'utf8', function(err, data) {
+    fs.readFile('random.txt', 'utf8', function (err, data) {
         if (err) {
             return console.log('Error: ', err)
         }
