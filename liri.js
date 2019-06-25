@@ -1,5 +1,6 @@
 require('dotenv').config()
 
+let fs = require('fs')
 let axios = require('axios')
 let keys = require('./keys')
 
@@ -65,9 +66,20 @@ function spotifyThis(song) {
 // case 'movie-this' function
 function movieThis(title) {
     console.log(title)
+    axios
+        .get('http://www.omdbapi.com/?apikey=trilogy&s=' + title)
+        .then(function (response) {
+            data = response.data
+            console.log(data.search.length)
+        })
 }
 
 // case 'do-what-it-says' function
-function doWhat(action) {
-    console.log(action)
+function doWhat() {
+    fs.readFile('random.txt', 'utf8', function(err, data) {
+        if (err) {
+            return console.log('Error: ', err)
+        }
+        console.log(data)
+    })
 }
