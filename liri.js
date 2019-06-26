@@ -10,15 +10,17 @@ let moment = require('moment')
 let spotify = new Spotify(keys.spotify)
 
 let request = process.argv[3]
-let choice = process.argv[2]
+let option = process.argv[2]
 
-switch (choice) {
+switch (option) {
     case 'concert-this':
         concertThis(request)
+        logCommand(option, request)
         break
 
     case 'spotify-this-song':
         spotifyThis(request)
+        logCommand(option, request)
         break
 
     case 'movie-this':
@@ -27,9 +29,11 @@ switch (choice) {
         } else {
             movieThis('mr.nobody')
         }
+        logCommand(option, request)
         break
     case 'do-what-it-says':
         doWhat(request)
+        logCommand(option, request)
         break
 }
 
@@ -92,5 +96,15 @@ function doWhat() {
             return console.log('Error: ', err)
         }
         console.log(data)
+
     })
+}
+
+// log commands
+function logCommand() {
+    fs.appendFile('log.txt', option + ' ' + request + '\n', function(err) {
+        if (err) {
+            console.log(err)
+        }
+    } )
 }
