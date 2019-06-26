@@ -10,8 +10,9 @@ let moment = require('moment')
 let spotify = new Spotify(keys.spotify)
 
 let request = process.argv[3]
+let choice = process.argv[2]
 
-switch (process.argv[2]) {
+switch (choice) {
     case 'concert-this':
         concertThis(request)
         break
