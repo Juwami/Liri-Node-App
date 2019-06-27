@@ -33,8 +33,7 @@ let choiceOptions = function (option, request) {
             logCommand(option, request)
             break
         case 'do-what-it-says':
-            doWhat(request, option)
-            logCommand(option, request)
+            doWhat(request)
             break
         default:
             console.log('LIRI is unable to process command')
@@ -108,11 +107,9 @@ function doWhat() {
             return console.log('Error: ', err)
         }
         let command = data.split(',')
-
         if (command.length === 2) {
-            choiceOptions(command[0],command[1])
-        } 
-        else {
+            choiceOptions(command[0].toString(), command[1].toString())
+        } else {
             console.log('There are not enough commands to run successfully')
         }
 
@@ -121,11 +118,20 @@ function doWhat() {
 
 // log commands
 function logCommand() {
-    fs.appendFile('log.txt', option + ' ' + request + '\n', function (err) {
-        if (err) {
-            console.log(err)
-        }
-    })
+    if (option && request) {
+        fs.appendFile('log.txt', option + ' ' + request + '\n', function (err) {
+            if (err) {
+                console.log(err)
+            }
+        })
+    }
+    else {
+        fs.appendFile('log.txt', option + '\n', function (err) {
+            if (err) {
+                console.log(err)
+            }
+        })
+    }
 }
 
-choiceOptions(process.argv[2],process.argv[3])
+choiceOptions(process.argv[2], process.argv[3])
