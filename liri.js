@@ -35,6 +35,9 @@ switch (option) {
         doWhat(request)
         logCommand(option, request)
         break
+    default:
+        console.log('LIRI inable to process command')
+        break
 }
 
 // case 'concert-this' function
@@ -67,7 +70,7 @@ function spotifyThis(song) {
             if (err) {
                 return console.log('Error occured: ', err)
             }
-            console.log(data)
+            console.log(data.tracks)
         })
 }
 
@@ -102,9 +105,9 @@ function doWhat() {
 
 // log commands
 function logCommand() {
-    fs.appendFile('log.txt', option + ' ' + request + '\n', function(err) {
+    fs.appendFile('log.txt', option + ' ' + request + '\n', function (err) {
         if (err) {
             console.log(err)
         }
-    } )
+    })
 }
