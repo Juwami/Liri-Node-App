@@ -36,7 +36,7 @@ switch (option) {
         logCommand(option, request)
         break
     default:
-        console.log('LIRI inable to process command')
+        console.log('LIRI is unable to process command')
         break
 }
 
