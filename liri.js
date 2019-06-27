@@ -72,6 +72,7 @@ function spotifyThis(song) {
             }
             let results = data.tracks.items
             for (i = 0; i < results.length; i++) {
+                console.log(`${i}.`)
                 console.log(`Artist(s): ${results[i].artists[0].name}`)
                 console.log(`Song's Name: ${results[i].name}`)
                 console.log(`Spotify Song Link: ${results[i].external_urls.spotify}`)
@@ -86,16 +87,16 @@ function movieThis(title) {
     axios
         .get('http://www.omdbapi.com/?apikey=trilogy&t=' + title)
         .then(function (response) {
-            data = response.data
-            // console.log(data)
-            console.log('Title: ', data.Title)
-            console.log('Year: ', data.Year)
-            console.log('imdbRating: ', data.imdbRating)
-            console.log('Rating: ', data.Ratings[1])
-            console.log('Country: ', data.Country)
-            console.log('Language: ', data.Language)
-            console.log('Plot: ', data.Plot)
-            console.log('Actors: ', data.Actors)
+            d = response.data
+            console.log(d)
+            console.log(`Title: ${d.Title}`)
+            console.log(`Year: ${d.Year}`)
+            console.log(`imdbRating: ${d.imdbRating}`)
+            console.log(`Rating: ${d.Ratings[1]}`)
+            console.log(`Country: ${d.Country}`)
+            console.log(`Language: ${d.Language}`)
+            console.log(`Plot: ${d.Plot}`)
+            console.log(`Actors: ${d.Actors}`)
         })
 }
 
