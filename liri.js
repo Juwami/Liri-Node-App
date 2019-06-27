@@ -20,7 +20,12 @@ let choiceOptions = function (option, request) {
             break
 
         case 'spotify-this-song':
-            spotifyThis(request)
+            if (request) {
+                spotifyThis(request)
+            }
+            else {
+                spotifyThis('the sign')
+            }
             logCommand(option, request)
             break
 
@@ -49,13 +54,13 @@ function concertThis(artist) {
         .then(function (response) {
             let data = response.data
             // console.log(data)
-            console.log('Number of Events: ', data.length)
+            console.log(`Number of Events: ${data.length}`)
             for (i = 0; i < data.length; i++) {
-                console.log(i + '.')
-                console.log(data[i].venue.name)
-                console.log(data[i].venue.city + ', ' + data[i].venue.region)
+                console.log(`${i}.`)
+                console.log(`Venue Name: ${data[i].venue.name}`)
+                console.log(`Venue Location: ${data[i].venue.city},${data[i].venue.region}`)
                 let date = data[i].datetime
-                console.log(moment(date).format('L'))
+                console.log(`Date: ${moment(date).format('L')}`)
                 console.log('------------------------------')
             }
         })

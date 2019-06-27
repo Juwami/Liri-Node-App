@@ -4,3 +4,8 @@ spotify-this-song bad guy
 do-what-it-says
 movie-this Child's Play
 concert-this billie eilish
+movie-this
+spotify-this-song
+spotify-this-song bad
+spotify-this-song bad guy
+concert-this billie eilish
