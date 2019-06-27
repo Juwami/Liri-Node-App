@@ -2,7 +2,7 @@
 
 Screenshots are located here:https://github.com/Juwami/Liri-Node-App/tree/master/screenshots  
 
-The app allows the user to run a search the Spotify API for track names, Bands in Town API, and OMDB API for movies.  
+The app allows the user to run a search the Spotify API for track names, Bands in Town API for concert dates, and OMDB API for movies.  
 
 ## Directions
 To start the app, use 'node liri.js', one of the options below, then follow up text you are searching for
