@@ -12,37 +12,39 @@ let spotify = new Spotify(keys.spotify)
 let request = process.argv[3]
 let option = process.argv[2]
 
-switch (option) {
-    case 'concert-this':
-        concertThis(request)
-        logCommand(option, request)
-        break
+let choiceOptions = function (option, request) {
+    switch (option) {
+        case 'concert-this':
+            concertThis(request)
+            logCommand(option, request)
+            break
 
-    case 'spotify-this-song':
-        spotifyThis(request)
-        logCommand(option, request)
-        break
+        case 'spotify-this-song':
+            spotifyThis(request)
+            logCommand(option, request)
+            break
 
-    case 'movie-this':
-        if (request) {
-            movieThis(request)
-        } else {
-            movieThis('mr.nobody')
-        }
-        logCommand(option, request)
-        break
-    case 'do-what-it-says':
-        doWhat(request)
-        logCommand(option, request)
-        break
-    default:
-        console.log('LIRI is unable to process command')
-        break
+        case 'movie-this':
+            if (request) {
+                movieThis(request)
+            } else {
+                movieThis('mr.nobody')
+            }
+            logCommand(option, request)
+            break
+        case 'do-what-it-says':
+            doWhat(request, option)
+            logCommand(option, request)
+            break
+        default:
+            console.log('LIRI is unable to process command')
+            break
+    }
 }
 
 // case 'concert-this' function
 function concertThis(artist) {
-    console.log(artist)
+    // console.log(artist)
     axios
         .get('https://rest.bandsintown.com/artists/' + artist + '/events?app_id=codingbootcamp')
         .then(function (response) {
@@ -105,7 +107,14 @@ function doWhat() {
         if (err) {
             return console.log('Error: ', err)
         }
-        console.log(data)
+        let command = data.split(',')
+
+        if (command.length === 2) {
+            choiceOptions(command[0],command[1])
+        } 
+        else {
+            console.log('There are not enough commands to run successfully')
+        }
 
     })
 }
@@ -118,3 +127,5 @@ function logCommand() {
         }
     })
 }
+
+choiceOptions(process.argv[2],process.argv[3])
