@@ -88,11 +88,10 @@ function movieThis(title) {
         .get('http://www.omdbapi.com/?apikey=trilogy&t=' + title)
         .then(function (response) {
             d = response.data
-            console.log(d)
             console.log(`Title: ${d.Title}`)
             console.log(`Year: ${d.Year}`)
             console.log(`imdbRating: ${d.imdbRating}`)
-            console.log(`Rating: ${d.Ratings[1]}`)
+            console.log(`Rating: ${d.Ratings[1].Source} ${d.Ratings[1].Value}`)
             console.log(`Country: ${d.Country}`)
             console.log(`Language: ${d.Language}`)
             console.log(`Plot: ${d.Plot}`)
