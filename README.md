@@ -14,11 +14,35 @@ To start the app, use 'node liri.js', one of the options below, then follow up t
 Example: node liri.js concert-this 'billie eilish'
 
 ### concert-this
-* Name of the venue
-* Venue location
-* Date of the Event
+* Venue Name
+* Venue Location
+* Date of Event
+
 ### spotify-this-song
+* Artist(s)
+* Song Name
+* Spotify Song Link
+* Album Name
 
 ### move-this
+* Movie Title
+* Movie Release Year
+* IMDB Rating
+* Rotten Tomatoes Rating
+* Country in which Movie is From
+* Movie's Default Language
+* Movie Plot
+* Movie Actors
 
 ### do-what-it-says
+* Reads the random.txt file and runs the commands listed
+
+## Tech
+* JavaScript
+* Node.js
+* Moment.js
+* Axios
+* DotEnv
+* Node-Spotify-API
+* OMDB API
+* Bands in Town API
