@@ -70,12 +70,7 @@ function spotifyThis(song) {
             if (err) {
                 return console.log('Error occured: ', err)
             }
-            // Artist(s)
-            // The song 's name
-            // A preview link of the song from Spotify
-            // The album that the song is from
             let results = data.tracks.items
-            // console.log(results[0])
             for (i = 0; i < results.length; i++) {
                 console.log(`Artist(s): ${results[i].artists[0].name}`)
                 console.log(`Song's Name: ${results[i].name}`)
